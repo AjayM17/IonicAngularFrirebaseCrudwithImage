@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar (ionChange)="search($event)"></ion-searchbar>
+<!-- <ion-card *ngFor="let user of users">
+  <ion-card-title>User Name {{user.user_name}}</ion-card-title>
+  <img  [src] = "user.user_img_url"/>
+</ion-card> -->
+
+<ion-card *ngFor="let user of search_list" >
+  <img  width="200" height="200" [src] = "user.user_img_url"/>
+  <div> User Name  {{user.user_name}}</div>
+  <div> User Email  {{user.user_email}}</div>
+  <div> User Number  {{user.user_number}}</div>
+  <div> User State  {{user.user_state}}</div>
+  <div> User City  {{user.user_city}}</div>
+  <ion-button (click)="goEditPage(user)">
+    Edit
+  </ion-button>
+  <ion-button (click)="deleteUser(user.id)">
+   Delete
+  </ion-button>
+</ion-card>
+
+
+</ion-content>

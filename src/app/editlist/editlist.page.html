@@ -10,7 +10,7 @@
 
   
   
-  <form [formGroup]="createUserForm" (submit)="createUser()">
+  <form [formGroup]="createUserForm" (submit)="updateUser()">
     <ion-item>
       <ion-label stacked>User Name</ion-label>
       <ion-input
@@ -26,6 +26,7 @@
       <ion-input
         formControlName="userEmail"
         type="text"
+        
        
       >
       </ion-input>
@@ -43,18 +44,18 @@
 
     <ion-item>
       <ion-label>State</ion-label>
-      <ion-select placeholder="Select One"    (ionChange)="chooseState($event)">
+      <ion-select placeholder="Select One"  formControlName="userState"   (ionChange)="chooseState($event)">
         <ion-select-option *ngFor="let state of states"  [value]="state.id" >{{state.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>City</ion-label>
-      <ion-select placeholder="Select City"     (ionChange)="chooseCity($event)">
-        <ion-select-option *ngFor="let city of selected_cites" [value]="city.name">{{city.name}}</ion-select-option>
+      <ion-select  placeholder="Select City"   formControlName="userCity"  (ionChange)="chooseCity($event)" >
+        <ion-select-option  *ngFor="let city of selected_cites" [value]="city.name">{{city.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <div>
-      <img [src]="imageUrl"/>
+      <img [src]="uploadFileUrl"/>
     </div>
    
      
@@ -79,10 +80,9 @@
     <ion-button (click)="uploadImage()"> Upload Image </ion-button>
     
     <ion-button expand="block" type="submit">
-      Create User
+     Upadte
     </ion-button>
   </form>
 
-  <ion-button routerLink="/list"> Show Users</ion-button>
 
 </ion-content>
